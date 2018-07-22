@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<title>web标准色对比</title>
+	
+	<script type="text/javascript" src="webcolor.js"></script>
+
+	<style type="text/css">
+		body{
+			background-color: #e0e0e0; 
+		}
+		.fix_top{
+			position: fixed;
+		    left: 0;
+		    top:0;
+		    right: 0;
+		    height: 105px;
+		    background: #e0e0e0;
+		}
+		.console_menu{
+			width:550px;
+			margin-left:  auto;
+			margin-right: auto;
+		}
+		.color_list{
+			margin-top: 105px;
+			margin-bottom: 105px;
+			margin-left: auto;
+			margin-right: auto;
+			width:550px;
+			border:1px;
+			border-style: solid;
+			border-color: #f0f0f0;
+			border-bottom:none;
+		}
+		#quite{
+			width: 50px;
+			height: 26px;
+		    border-radius: 4px;
+		    border-width: 1px;
+		    background: #e0e0e0;
+		    border-color: #fffff4;
+		    color: #737300;
+		    cursor:pointer;
+		    /*cursor: -webkit-grab;
+		    -moz代表firefox浏览器私有属性，-ms代表ie浏览器私有属性，-webkit代表safari、chrome私有属性。
+		    */
+		}
+		.input_color{
+			height: 20px;
+   			width: 150px;
+   			margin-right: 10px;
+   			padding-left: 10px;
+   			border-radius: 1px;
+   			background: #fafafa;
+   			font-size: 14px;
+   			color: #737300;
+		}
+		.input_color::-webkit-input-placeholder{
+            color:#DEDEBE;
+        }
+        .input_color::-moz-placeholder{   /* Mozilla Firefox 19+ */
+            color:#DEDEBE;
+        }
+        .input_color:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+            color:#DEDEBE;
+        }
+        .input_color:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+            color:#DEDEBE;
+        }
+
+        td{
+			color: #737300;
+			height: 40px;
+			border-bottom: 1px solid #f0f0f0;
+		}
+
+		#sign{
+			color: #FF2D2D;
+			font-size: 14px;
+			font-weight: bolder;
+			display: none;
+		}
+	</style>
+
+
+</head>
+<body>
+	<div class="fix_top">
+		<div class="console_menu">
+			<h2>WEB标准色彩比较</h2>
+			<div>
+				<input type="text" class="input_color" id="bgcolor" name="background" placeholder="#2f0000 background" title="背景色" />
+				<input type="text" class="input_color" id="master-color" name="master-color" placeholder="#000000 master-color" title="主色调" />
+				<button type="button" id="quite" onclick="quite()">比较</button>
+				<label id="sign">提示</label>
+			</div>
+		</div>
+		<hr/>
+	</div>
+	
+	<table class="color_list" cellspacing="0">
+    <tbody>
+        <tr>
+            <td width="150" bgcolor="#2f0000" rowspan="300" title="主色调" id ="master-color-demo">&nbsp;</td>
+            <td width="150" bgcolor="#000000" title="#000000">&nbsp;</td>
+            <td width="150" bgcolor="#000000" rowspan="300" title="背景色" id="background-color-demo">&nbsp;</td>
+            <td width="100"  >#000000</td>
+        </tr>
+		<tr><td  bgcolor="#272727" title="#272727">&nbsp;</td><td >#272727</td></tr>
+		<tr><td  bgcolor="#3C3C3C" title="#3C3C3C">&nbsp;</td><td >#3C3C3C</td></tr>
+		<tr><td  bgcolor="#4F4F4F" title="#4F4F4F">&nbsp;</td><td >#4F4F4F</td></tr>
+		<tr><td  bgcolor="#5B5B5B" title="#5B5B5B">&nbsp;</td><td >#5B5B5B</td></tr>
+		<tr><td  bgcolor="#6C6C6C" title="#6C6C6C">&nbsp;</td><td >#6C6C6C</td></tr>
+		<tr><td  bgcolor="#7B7B7B" title="#7B7B7B">&nbsp;</td><td >#7B7B7B</td></tr>
+		<tr><td  bgcolor="#8E8E8E" title="#8E8E8E">&nbsp;</td><td >#8E8E8E</td></tr>
+		<tr><td  bgcolor="#9D9D9D" title="#9D9D9D">&nbsp;</td><td >#9D9D9D</td></tr>
+		<tr><td  bgcolor="#ADADAD" title="#ADADAD">&nbsp;</td><td >#ADADAD</td></tr>
+		<tr><td  bgcolor="#BEBEBE" title="#BEBEBE">&nbsp;</td><td >#BEBEBE</td></tr>
+		<tr><td  bgcolor="#d0d0d0" title="#d0d0d0">&nbsp;</td><td >#d0d0d0</td></tr>
+		<tr><td  bgcolor="#E0E0E0" title="#E0E0E0">&nbsp;</td><td >#E0E0E0</td></tr>
+		<tr><td  bgcolor="#F0F0F0" title="#F0F0F0">&nbsp;</td><td >#F0F0F0</td></tr>
+		<tr><td  bgcolor="#FCFCFC" title="#FCFCFC">&nbsp;</td><td >#FCFCFC</td></tr>
+		<tr><td  bgcolor="#FFFFFF" title="#FFFFFF">&nbsp;</td><td >#FFFFFF</td></tr>
+		<tr><td  bgcolor="#000079" title="#000079">&nbsp;</td><td >#000079</td></tr>
+		<tr><td  bgcolor="#000093" title="#000093">&nbsp;</td><td >#000093</td></tr>
+		<tr><td  bgcolor="#0000C6" title="#0000C6">&nbsp;</td><td >#0000C6</td></tr>
+		<tr><td  bgcolor="#0000C6" title="#0000C6">&nbsp;</td><td >#0000C6</td></tr>
+		<tr><td  bgcolor="#0000E3" title="#0000E3">&nbsp;</td><td >#0000E3</td></tr>
+		<tr><td  bgcolor="#2828FF" title="#2828FF">&nbsp;</td><td >#2828FF</td></tr>
+		<tr><td  bgcolor="#4A4AFF" title="#4A4AFF">&nbsp;</td><td >#4A4AFF</td></tr>
+		<tr><td  bgcolor="#6A6AFF" title="#6A6AFF">&nbsp;</td><td >#6A6AFF</td></tr>
+		<tr><td  bgcolor="#7D7DFF" title="#7D7DFF">&nbsp;</td><td >#7D7DFF</td></tr>
+		<tr><td  bgcolor="#9393FF" title="#9393FF">&nbsp;</td><td >#9393FF</td></tr>
+		<tr><td  bgcolor="#AAAAFF" title="#AAAAFF">&nbsp;</td><td >#AAAAFF</td></tr>
+		<tr><td  bgcolor="#B9B9FF" title="#B9B9FF">&nbsp;</td><td >#B9B9FF</td></tr>
+		<tr><td  bgcolor="#CECEFF" title="#CECEFF">&nbsp;</td><td >#CECEFF</td></tr>
+		<tr><td  bgcolor="#DDDDFF" title="#DDDDFF">&nbsp;</td><td >#DDDDFF</td></tr>
+		<tr><td  bgcolor="#ECECFF" title="#ECECFF">&nbsp;</td><td >#ECECFF</td></tr>
+		<tr><td  bgcolor="#FBFBFF" title="#FBFBFF">&nbsp;</td><td >#FBFBFF</td></tr>
+		<tr><td  bgcolor="#467500" title="#467500">&nbsp;</td><td >#467500</td></tr>
+		<tr><td  bgcolor="#548C00" title="#548C00">&nbsp;</td><td >#548C00</td></tr>
+		<tr><td  bgcolor="#64A600" title="#64A600">&nbsp;</td><td >#64A600</td></tr>
+		<tr><td  bgcolor="#73BF00" title="#73BF00">&nbsp;</td><td >#73BF00</td></tr>
+		<tr><td  bgcolor="#82D900" title="#82D900">&nbsp;</td><td >#82D900</td></tr>
+		<tr><td  bgcolor="#8CEA00" title="#8CEA00">&nbsp;</td><td >#8CEA00</td></tr>
+		<tr><td  bgcolor="#9AFF02" title="#9AFF02">&nbsp;</td><td >#9AFF02</td></tr>
+		<tr><td  bgcolor="#A8FF24" title="#A8FF24">&nbsp;</td><td >#A8FF24</td></tr>
+		<tr><td  bgcolor="#B7FF4A" title="#B7FF4A">&nbsp;</td><td >#B7FF4A</td></tr>
+		<tr><td  bgcolor="#C2FF68" title="#C2FF68">&nbsp;</td><td >#C2FF68</td></tr>
+		<tr><td  bgcolor="#CCFF80" title="#CCFF80">&nbsp;</td><td >#CCFF80</td></tr>
+		<tr><td  bgcolor="#D3FF93" title="#D3FF93">&nbsp;</td><td >#D3FF93</td></tr>
+		<tr><td  bgcolor="#DEFFAC" title="#DEFFAC">&nbsp;</td><td >#DEFFAC</td></tr>
+		<tr><td  bgcolor="#E8FFC4" title="#E8FFC4">&nbsp;</td><td >#E8FFC4</td></tr>
+		<tr><td  bgcolor="#EFFFD7" title="#EFFFD7">&nbsp;</td><td >#EFFFD7</td></tr>
+		<tr><td  bgcolor="#F5FFE8" title="#F5FFE8">&nbsp;</td><td >#F5FFE8</td></tr>
+		<tr><td  bgcolor="#613030" title="#613030">&nbsp;</td><td >#613030</td></tr>
+		<tr><td  bgcolor="#743A3A" title="#743A3A">&nbsp;</td><td >#743A3A</td></tr>
+		<tr><td  bgcolor="#804040" title="#804040">&nbsp;</td><td >#804040</td></tr>
+		<tr><td  bgcolor="#984B4B" title="#984B4B">&nbsp;</td><td >#984B4B</td></tr>
+		<tr><td  bgcolor="#AD5A5A" title="#AD5A5A">&nbsp;</td><td >#AD5A5A</td></tr>
+		<tr><td  bgcolor="#B87070" title="#B87070">&nbsp;</td><td >#B87070</td></tr>
+		<tr><td  bgcolor="#C48888" title="#C48888">&nbsp;</td><td >#C48888</td></tr>
+		<tr><td  bgcolor="#CF9E9E" title="#CF9E9E">&nbsp;</td><td >#CF9E9E</td></tr>
+		<tr><td  bgcolor="#D9B3B3" title="#D9B3B3">&nbsp;</td><td >#D9B3B3</td></tr>
+		<tr><td  bgcolor="#E1C4C4" title="#E1C4C4">&nbsp;</td><td >#E1C4C4</td></tr>
+		<tr><td  bgcolor="#EBD6D6" title="#EBD6D6">&nbsp;</td><td >#EBD6D6</td></tr>
+		<tr><td  bgcolor="#F2E6E6" title="#F2E6E6">&nbsp;</td><td >#F2E6E6</td></tr>
+		<tr><td  bgcolor="#2F0000" title="#2F0000">&nbsp;</td><td >#2F0000</td></tr>
+		<tr><td  bgcolor="#4D0000" title="#4D0000">&nbsp;</td><td >#4D0000</td></tr>
+		<tr><td  bgcolor="#600000" title="#600000">&nbsp;</td><td >#600000</td></tr>
+		<tr><td  bgcolor="#750000" title="#750000">&nbsp;</td><td >#750000</td></tr>
+		<tr><td  bgcolor="#930000" title="#930000">&nbsp;</td><td >#930000</td></tr>
+		<tr><td  bgcolor="#AE0000" title="#AE0000">&nbsp;</td><td >#AE0000</td></tr>
+		<tr><td  bgcolor="#CE0000" title="#CE0000">&nbsp;</td><td >#CE0000</td></tr>
+		<tr><td  bgcolor="#EA0000" title="#EA0000">&nbsp;</td><td >#EA0000</td></tr>
+		<tr><td  bgcolor="#FF0000" title="#FF0000">&nbsp;</td><td >#FF0000</td></tr>
+		<tr><td  bgcolor="#FF2D2D" title="#FF2D2D">&nbsp;</td><td >#FF2D2D</td></tr>
+		<tr><td  bgcolor="#FF5151" title="#FF5151">&nbsp;</td><td >#FF5151</td></tr>
+		<tr><td  bgcolor="#ff7575" title="#ff7575">&nbsp;</td><td >#ff7575</td></tr>
+		<tr><td  bgcolor="#FF9797" title="#FF9797">&nbsp;</td><td >#FF9797</td></tr>
+		<tr><td  bgcolor="#FFB5B5" title="#FFB5B5">&nbsp;</td><td >#FFB5B5</td></tr>
+		<tr><td  bgcolor="#FFD2D2" title="#FFD2D2">&nbsp;</td><td >#FFD2D2</td></tr>
+		<tr><td  bgcolor="#FFECEC" title="#FFECEC">&nbsp;</td><td >#FFECEC</td></tr>
+		<tr><td  bgcolor="#000079" title="#000079">&nbsp;</td><td >#000079</td></tr>
+		<tr><td  bgcolor="#003D79" title="#003D79">&nbsp;</td><td >#003D79</td></tr>
+		<tr><td  bgcolor="#004B97" title="#004B97">&nbsp;</td><td >#004B97</td></tr>
+		<tr><td  bgcolor="#005AB5" title="#005AB5">&nbsp;</td><td >#005AB5</td></tr>
+		<tr><td  bgcolor="#0066CC" title="#0066CC">&nbsp;</td><td >#0066CC</td></tr>
+		<tr><td  bgcolor="#0072E3" title="#0072E3">&nbsp;</td><td >#0072E3</td></tr>
+		<tr><td  bgcolor="#0080FF" title="#0080FF">&nbsp;</td><td >#0080FF</td></tr>
+		<tr><td  bgcolor="#2894FF" title="#2894FF">&nbsp;</td><td >#2894FF</td></tr>
+		<tr><td  bgcolor="#46A3FF" title="#46A3FF">&nbsp;</td><td >#46A3FF</td></tr>
+		<tr><td  bgcolor="#66B3FF" title="#66B3FF">&nbsp;</td><td >#66B3FF</td></tr>
+		<tr><td  bgcolor="#84C1FF" title="#84C1FF">&nbsp;</td><td >#84C1FF</td></tr>
+		<tr><td  bgcolor="#97CBFF" title="#97CBFF">&nbsp;</td><td >#97CBFF</td></tr>
+		<tr><td  bgcolor="#ACD6FF" title="#ACD6FF">&nbsp;</td><td >#ACD6FF</td></tr>
+		<tr><td  bgcolor="#C4E1FF" title="#C4E1FF">&nbsp;</td><td >#C4E1FF</td></tr>
+		<tr><td  bgcolor="#D2E9FF" title="#D2E9FF">&nbsp;</td><td >#D2E9FF</td></tr>
+		<tr><td  bgcolor="#ECF5FF" title="#ECF5FF">&nbsp;</td><td >#ECF5FF</td></tr>
+		<tr><td  bgcolor="#424200" title="#424200">&nbsp;</td><td >#424200</td></tr>
+		<tr><td  bgcolor="#5B5B00" title="#5B5B00">&nbsp;</td><td >#5B5B00</td></tr>
+		<tr><td  bgcolor="#737300" title="#737300">&nbsp;</td><td >#737300</td></tr>
+		<tr><td  bgcolor="#8C8C00" title="#8C8C00">&nbsp;</td><td >#8C8C00</td></tr>
+		<tr><td  bgcolor="#A6A600" title="#A6A600">&nbsp;</td><td >#A6A600</td></tr>
+		<tr><td  bgcolor="#C4C400" title="#C4C400">&nbsp;</td><td >#C4C400</td></tr>
+		<tr><td  bgcolor="#E1E100" title="#E1E100">&nbsp;</td><td >#E1E100</td></tr>
+		<tr><td  bgcolor="#F9F900" title="#F9F900">&nbsp;</td><td >#F9F900</td></tr>
+		<tr><td  bgcolor="#FFFF37" title="#FFFF37">&nbsp;</td><td >#FFFF37</td></tr>
+		<tr><td  bgcolor="#FFFF6F" title="#FFFF6F">&nbsp;</td><td >#FFFF6F</td></tr>
+		<tr><td  bgcolor="#FFFF93" title="#FFFF93">&nbsp;</td><td >#FFFF93</td></tr>
+		<tr><td  bgcolor="#FFFFAA" title="#FFFFAA">&nbsp;</td><td >#FFFFAA</td></tr>
+		<tr><td  bgcolor="#FFFFB9" title="#FFFFB9">&nbsp;</td><td >#FFFFB9</td></tr>
+		<tr><td  bgcolor="#FFFFCE" title="#FFFFCE">&nbsp;</td><td >#FFFFCE</td></tr>
+		<tr><td  bgcolor="#FFFFDF" title="#FFFFDF">&nbsp;</td><td >#FFFFDF</td></tr>
+		<tr><td  bgcolor="#FFFFF4" title="#FFFFF4">&nbsp;</td><td >#FFFFF4</td></tr>
+		<tr><td  bgcolor="#616130" title="#616130">&nbsp;</td><td >#616130</td></tr>
+		<tr><td  bgcolor="#707038" title="#707038">&nbsp;</td><td >#707038</td></tr>
+		<tr><td  bgcolor="#808040" title="#808040">&nbsp;</td><td >#808040</td></tr>
+		<tr><td  bgcolor="#949449" title="#949449">&nbsp;</td><td >#949449</td></tr>
+		<tr><td  bgcolor="#A5A552" title="#A5A552">&nbsp;</td><td >#A5A552</td></tr>
+		<tr><td  bgcolor="#AFAF61" title="#AFAF61">&nbsp;</td><td >#AFAF61</td></tr>
+		<tr><td  bgcolor="#B9B973" title="#B9B973">&nbsp;</td><td >#B9B973</td></tr>
+		<tr><td  bgcolor="#C2C287" title="#C2C287">&nbsp;</td><td >#C2C287</td></tr>
+		<tr><td  bgcolor="#CDCD9A" title="#CDCD9A">&nbsp;</td><td >#CDCD9A</td></tr>
+		<tr><td  bgcolor="#D6D6AD" title="#D6D6AD">&nbsp;</td><td >#D6D6AD</td></tr>
+		<tr><td  bgcolor="#DEDEBE" title="#DEDEBE">&nbsp;</td><td >#DEDEBE</td></tr>
+		<tr><td  bgcolor="#E8E8D0" title="#E8E8D0">&nbsp;</td><td >#E8E8D0</td></tr>
+		<tr><td  bgcolor="#600030" title="#600030">&nbsp;</td><td >#600030</td></tr>
+		<tr><td  bgcolor="#820041" title="#820041">&nbsp;</td><td >#820041</td></tr>
+		<tr><td  bgcolor="#9F0050" title="#9F0050">&nbsp;</td><td >#9F0050</td></tr>
+		<tr><td  bgcolor="#BF0060" title="#BF0060">&nbsp;</td><td >#BF0060</td></tr>
+		<tr><td  bgcolor="#D9006C" title="#D9006C">&nbsp;</td><td >#D9006C</td></tr>
+		<tr><td  bgcolor="#F00078" title="#F00078">&nbsp;</td><td >#F00078</td></tr>
+		<tr><td  bgcolor="#FF0080" title="#FF0080">&nbsp;</td><td >#FF0080</td></tr>
+		<tr><td  bgcolor="#FF359A" title="#FF359A">&nbsp;</td><td >#FF359A</td></tr>
+		<tr><td  bgcolor="#FF60AF" title="#FF60AF">&nbsp;</td><td >#FF60AF</td></tr>
+		<tr><td  bgcolor="#FF79BC" title="#FF79BC">&nbsp;</td><td >#FF79BC</td></tr>
+		<tr><td  bgcolor="#FF95CA" title="#FF95CA">&nbsp;</td><td >#FF95CA</td></tr>
+		<tr><td  bgcolor="#ffaad5" title="#ffaad5">&nbsp;</td><td >#ffaad5</td></tr>
+		<tr><td  bgcolor="#FFC1E0" title="#FFC1E0">&nbsp;</td><td >#FFC1E0</td></tr>
+		<tr><td  bgcolor="#FFD9EC" title="#FFD9EC">&nbsp;</td><td >#FFD9EC</td></tr>
+		<tr><td  bgcolor="#FFECF5" title="#FFECF5">&nbsp;</td><td >#FFECF5</td></tr>
+		<tr><td  bgcolor="#FFF7FB" title="#FFF7FB">&nbsp;</td><td >#FFF7FB</td></tr>
+		<tr><td  bgcolor="#003E3E" title="#003E3E">&nbsp;</td><td >#003E3E</td></tr>
+		<tr><td  bgcolor="#005757" title="#005757">&nbsp;</td><td >#005757</td></tr>
+		<tr><td  bgcolor="#007979" title="#007979">&nbsp;</td><td >#007979</td></tr>
+		<tr><td  bgcolor="#009393" title="#009393">&nbsp;</td><td >#009393</td></tr>
+		<tr><td  bgcolor="#00AEAE" title="#00AEAE">&nbsp;</td><td >#00AEAE</td></tr>
+		<tr><td  bgcolor="#00CACA" title="#00CACA">&nbsp;</td><td >#00CACA</td></tr>
+		<tr><td  bgcolor="#00E3E3" title="#00E3E3">&nbsp;</td><td >#00E3E3</td></tr>
+		<tr><td  bgcolor="#00FFFF" title="#00FFFF">&nbsp;</td><td >#00FFFF</td></tr>
+		<tr><td  bgcolor="#4DFFFF" title="#4DFFFF">&nbsp;</td><td >#4DFFFF</td></tr>
+		<tr><td  bgcolor="#80FFFF" title="#80FFFF">&nbsp;</td><td >#80FFFF</td></tr>
+		<tr><td  bgcolor="#A6FFFF" title="#A6FFFF">&nbsp;</td><td >#A6FFFF</td></tr>
+		<tr><td  bgcolor="#BBFFFF" title="#BBFFFF">&nbsp;</td><td >#BBFFFF</td></tr>
+		<tr><td  bgcolor="#CAFFFF" title="#CAFFFF">&nbsp;</td><td >#CAFFFF</td></tr>
+		<tr><td  bgcolor="#D9FFFF" title="#D9FFFF">&nbsp;</td><td >#D9FFFF</td></tr>
+		<tr><td  bgcolor="#ECFFFF" title="#ECFFFF">&nbsp;</td><td >#ECFFFF</td></tr>
+		<tr><td  bgcolor="#FDFFFF" title="#FDFFFF">&nbsp;</td><td >#FDFFFF</td></tr>
+		<tr><td  bgcolor="#5B4B00" title="#5B4B00">&nbsp;</td><td >#5B4B00</td></tr>
+		<tr><td  bgcolor="#796400" title="#796400">&nbsp;</td><td >#796400</td></tr>
+		<tr><td  bgcolor="#977C00" title="#977C00">&nbsp;</td><td >#977C00</td></tr>
+		<tr><td  bgcolor="#AE8F00" title="#AE8F00">&nbsp;</td><td >#AE8F00</td></tr>
+		<tr><td  bgcolor="#C6A300" title="#C6A300">&nbsp;</td><td >#C6A300</td></tr>
+		<tr><td  bgcolor="#D9B300" title="#D9B300">&nbsp;</td><td >#D9B300</td></tr>
+		<tr><td  bgcolor="#EAC100" title="#EAC100">&nbsp;</td><td >#EAC100</td></tr>
+		<tr><td  bgcolor="#FFD306" title="#FFD306">&nbsp;</td><td >#FFD306</td></tr>
+		<tr><td  bgcolor="#FFDC35" title="#FFDC35">&nbsp;</td><td >#FFDC35</td></tr>
+		<tr><td  bgcolor="#FFE153" title="#FFE153">&nbsp;</td><td >#FFE153</td></tr>
+		<tr><td  bgcolor="#FFE66F" title="#FFE66F">&nbsp;</td><td >#FFE66F</td></tr>
+		<tr><td  bgcolor="#FFED97" title="#FFED97">&nbsp;</td><td >#FFED97</td></tr>
+		<tr><td  bgcolor="#FFF0AC" title="#FFF0AC">&nbsp;</td><td >#FFF0AC</td></tr>
+		<tr><td  bgcolor="#FFF4C1" title="#FFF4C1">&nbsp;</td><td >#FFF4C1</td></tr>
+		<tr><td  bgcolor="#FFF8D7" title="#FFF8D7">&nbsp;</td><td >#FFF8D7</td></tr>
+		<tr><td  bgcolor="#FFFCEC" title="#FFFCEC">&nbsp;</td><td >#FFFCEC</td></tr>
+		<tr><td  bgcolor="#336666" title="#336666">&nbsp;</td><td >#336666</td></tr>
+		<tr><td  bgcolor="#3D7878" title="#3D7878">&nbsp;</td><td >#3D7878</td></tr>
+		<tr><td  bgcolor="#408080" title="#408080">&nbsp;</td><td >#408080</td></tr>
+		<tr><td  bgcolor="#4F9D9D" title="#4F9D9D">&nbsp;</td><td >#4F9D9D</td></tr>
+		<tr><td  bgcolor="#5CADAD" title="#5CADAD">&nbsp;</td><td >#5CADAD</td></tr>
+		<tr><td  bgcolor="#6FB7B7" title="#6FB7B7">&nbsp;</td><td >#6FB7B7</td></tr>
+		<tr><td  bgcolor="#81C0C0" title="#81C0C0">&nbsp;</td><td >#81C0C0</td></tr>
+		<tr><td  bgcolor="#95CACA" title="#95CACA">&nbsp;</td><td >#95CACA</td></tr>
+		<tr><td  bgcolor="#A3D1D1" title="#A3D1D1">&nbsp;</td><td >#A3D1D1</td></tr>
+		<tr><td  bgcolor="#B3D9D9" title="#B3D9D9">&nbsp;</td><td >#B3D9D9</td></tr>
+		<tr><td  bgcolor="#C4E1E1" title="#C4E1E1">&nbsp;</td><td >#C4E1E1</td></tr>
+		<tr><td  bgcolor="#D1E9E9" title="#D1E9E9">&nbsp;</td><td >#D1E9E9</td></tr>
+		<tr><td  bgcolor="#460046" title="#460046">&nbsp;</td><td >#460046</td></tr>
+		<tr><td  bgcolor="#5E005E" title="#5E005E">&nbsp;</td><td >#5E005E</td></tr>
+		<tr><td  bgcolor="#750075" title="#750075">&nbsp;</td><td >#750075</td></tr>
+		<tr><td  bgcolor="#930093" title="#930093">&nbsp;</td><td >#930093</td></tr>
+		<tr><td  bgcolor="#AE00AE" title="#AE00AE">&nbsp;</td><td >#AE00AE</td></tr>
+		<tr><td  bgcolor="#D200D2" title="#D200D2">&nbsp;</td><td >#D200D2</td></tr>
+		<tr><td  bgcolor="#E800E8" title="#E800E8">&nbsp;</td><td >#E800E8</td></tr>
+		<tr><td  bgcolor="#FF00FF" title="#FF00FF">&nbsp;</td><td >#FF00FF</td></tr>
+		<tr><td  bgcolor="#FF44FF" title="#FF44FF">&nbsp;</td><td >#FF44FF</td></tr>
+		<tr><td  bgcolor="#FF77FF" title="#FF77FF">&nbsp;</td><td >#FF77FF</td></tr>
+		<tr><td  bgcolor="#FF8EFF" title="#FF8EFF">&nbsp;</td><td >#FF8EFF</td></tr>
+		<tr><td  bgcolor="#ffa6ff" title="#ffa6ff">&nbsp;</td><td >#ffa6ff</td></tr>
+		<tr><td  bgcolor="#FFBFFF" title="#FFBFFF">&nbsp;</td><td >#FFBFFF</td></tr>
+		<tr><td  bgcolor="#FFD0FF" title="#FFD0FF">&nbsp;</td><td >#FFD0FF</td></tr>
+		<tr><td  bgcolor="#FFE6FF" title="#FFE6FF">&nbsp;</td><td >#FFE6FF</td></tr>
+		<tr><td  bgcolor="#FFF7FF" title="#FFF7FF">&nbsp;</td><td >#FFF7FF</td></tr>
+		<tr><td  bgcolor="#006030" title="#006030">&nbsp;</td><td >#006030</td></tr>
+		<tr><td  bgcolor="#01814A" title="#01814A">&nbsp;</td><td >#01814A</td></tr>
+		<tr><td  bgcolor="#019858" title="#019858">&nbsp;</td><td >#019858</td></tr>
+		<tr><td  bgcolor="#01B468" title="#01B468">&nbsp;</td><td >#01B468</td></tr>
+		<tr><td  bgcolor="#02C874" title="#02C874">&nbsp;</td><td >#02C874</td></tr>
+		<tr><td  bgcolor="#02DF82" title="#02DF82">&nbsp;</td><td >#02DF82</td></tr>
+		<tr><td  bgcolor="#02F78E" title="#02F78E">&nbsp;</td><td >#02F78E</td></tr>
+		<tr><td  bgcolor="#1AFD9C" title="#1AFD9C">&nbsp;</td><td >#1AFD9C</td></tr>
+		<tr><td  bgcolor="#4EFEB3" title="#4EFEB3">&nbsp;</td><td >#4EFEB3</td></tr>
+		<tr><td  bgcolor="#7AFEC6" title="#7AFEC6">&nbsp;</td><td >#7AFEC6</td></tr>
+		<tr><td  bgcolor="#96FED1" title="#96FED1">&nbsp;</td><td >#96FED1</td></tr>
+		<tr><td  bgcolor="#ADFEDC" title="#ADFEDC">&nbsp;</td><td >#ADFEDC</td></tr>
+		<tr><td  bgcolor="#C1FFE4" title="#C1FFE4">&nbsp;</td><td >#C1FFE4</td></tr>
+		<tr><td  bgcolor="#D7FFEE" title="#D7FFEE">&nbsp;</td><td >#D7FFEE</td></tr>
+		<tr><td  bgcolor="#E8FFF5" title="#E8FFF5">&nbsp;</td><td >#E8FFF5</td></tr>
+		<tr><td  bgcolor="#FBFFFD" title="#FBFFFD">&nbsp;</td><td >#FBFFFD</td></tr>
+		<tr><td  bgcolor="#844200" title="#844200">&nbsp;</td><td >#844200</td></tr>
+		<tr><td  bgcolor="#9F5000" title="#9F5000">&nbsp;</td><td >#9F5000</td></tr>
+		<tr><td  bgcolor="#BB5E00" title="#BB5E00">&nbsp;</td><td >#BB5E00</td></tr>
+		<tr><td  bgcolor="#D26900" title="#D26900">&nbsp;</td><td >#D26900</td></tr>
+		<tr><td  bgcolor="#EA7500" title="#EA7500">&nbsp;</td><td >#EA7500</td></tr>
+		<tr><td  bgcolor="#FF8000" title="#FF8000">&nbsp;</td><td >#FF8000</td></tr>
+		<tr><td  bgcolor="#FF9224" title="#FF9224">&nbsp;</td><td >#FF9224</td></tr>
+		<tr><td  bgcolor="#FFA042" title="#FFA042">&nbsp;</td><td >#FFA042</td></tr>
+		<tr><td  bgcolor="#FFAF60" title="#FFAF60">&nbsp;</td><td >#FFAF60</td></tr>
+		<tr><td  bgcolor="#FFBB77" title="#FFBB77">&nbsp;</td><td >#FFBB77</td></tr>
+		<tr><td  bgcolor="#FFC78E" title="#FFC78E">&nbsp;</td><td >#FFC78E</td></tr>
+		<tr><td  bgcolor="#FFD1A4" title="#FFD1A4">&nbsp;</td><td >#FFD1A4</td></tr>
+		<tr><td  bgcolor="#FFDCB9" title="#FFDCB9">&nbsp;</td><td >#FFDCB9</td></tr>
+		<tr><td  bgcolor="#FFE4CA" title="#FFE4CA">&nbsp;</td><td >#FFE4CA</td></tr>
+		<tr><td  bgcolor="#FFEEDD" title="#FFEEDD">&nbsp;</td><td >#FFEEDD</td></tr>
+		<tr><td  bgcolor="#FFFAF4" title="#FFFAF4">&nbsp;</td><td >#FFFAF4</td></tr>
+		<tr><td  bgcolor="#484891" title="#484891">&nbsp;</td><td >#484891</td></tr>
+		<tr><td  bgcolor="#5151A2" title="#5151A2">&nbsp;</td><td >#5151A2</td></tr>
+		<tr><td  bgcolor="#5A5AAD" title="#5A5AAD">&nbsp;</td><td >#5A5AAD</td></tr>
+		<tr><td  bgcolor="#7373B9" title="#7373B9">&nbsp;</td><td >#7373B9</td></tr>
+		<tr><td  bgcolor="#8080C0" title="#8080C0">&nbsp;</td><td >#8080C0</td></tr>
+		<tr><td  bgcolor="#9999CC" title="#9999CC">&nbsp;</td><td >#9999CC</td></tr>
+		<tr><td  bgcolor="#A6A6D2" title="#A6A6D2">&nbsp;</td><td >#A6A6D2</td></tr>
+		<tr><td  bgcolor="#B8B8DC" title="#B8B8DC">&nbsp;</td><td >#B8B8DC</td></tr>
+		<tr><td  bgcolor="#C7C7E2" title="#C7C7E2">&nbsp;</td><td >#C7C7E2</td></tr>
+		<tr><td  bgcolor="#D8D8EB" title="#D8D8EB">&nbsp;</td><td >#D8D8EB</td></tr>
+		<tr><td  bgcolor="#E6E6F2" title="#E6E6F2">&nbsp;</td><td >#E6E6F2</td></tr>
+		<tr><td  bgcolor="#F3F3FA" title="#F3F3FA">&nbsp;</td><td >#F3F3FA</td></tr>
+		<tr><td  bgcolor="#28004D" title="#28004D">&nbsp;</td><td >#28004D</td></tr>
+		<tr><td  bgcolor="#3A006F" title="#3A006F">&nbsp;</td><td >#3A006F</td></tr>
+		<tr><td  bgcolor="#4B0091" title="#4B0091">&nbsp;</td><td >#4B0091</td></tr>
+		<tr><td  bgcolor="#5B00AE" title="#5B00AE">&nbsp;</td><td >#5B00AE</td></tr>
+		<tr><td  bgcolor="#6F00D2" title="#6F00D2">&nbsp;</td><td >#6F00D2</td></tr>
+		<tr><td  bgcolor="#8600FF" title="#8600FF">&nbsp;</td><td >#8600FF</td></tr>
+		<tr><td  bgcolor="#921AFF" title="#921AFF">&nbsp;</td><td >#921AFF</td></tr>
+		<tr><td  bgcolor="#9F35FF" title="#9F35FF">&nbsp;</td><td >#9F35FF</td></tr>
+		<tr><td  bgcolor="#B15BFF" title="#B15BFF">&nbsp;</td><td >#B15BFF</td></tr>
+		<tr><td  bgcolor="#BE77FF" title="#BE77FF">&nbsp;</td><td >#BE77FF</td></tr>
+		<tr><td  bgcolor="#CA8EFF" title="#CA8EFF">&nbsp;</td><td >#CA8EFF</td></tr>
+		<tr><td  bgcolor="#d3a4ff" title="#d3a4ff">&nbsp;</td><td >#d3a4ff</td></tr>
+		<tr><td  bgcolor="#DCB5FF" title="#DCB5FF">&nbsp;</td><td >#DCB5FF</td></tr>
+		<tr><td  bgcolor="#E6CAFF" title="#E6CAFF">&nbsp;</td><td >#E6CAFF</td></tr>
+		<tr><td  bgcolor="#F1E1FF" title="#F1E1FF">&nbsp;</td><td >#F1E1FF</td></tr>
+		<tr><td  bgcolor="#FAF4FF" title="#FAF4FF">&nbsp;</td><td >#FAF4FF</td></tr>
+		<tr><td  bgcolor="#006000" title="#006000">&nbsp;</td><td >#006000</td></tr>
+		<tr><td  bgcolor="#007500" title="#007500">&nbsp;</td><td >#007500</td></tr>
+		<tr><td  bgcolor="#009100" title="#009100">&nbsp;</td><td >#009100</td></tr>
+		<tr><td  bgcolor="#00A600" title="#00A600">&nbsp;</td><td >#00A600</td></tr>
+		<tr><td  bgcolor="#00BB00" title="#00BB00">&nbsp;</td><td >#00BB00</td></tr>
+		<tr><td  bgcolor="#00DB00" title="#00DB00">&nbsp;</td><td >#00DB00</td></tr>
+		<tr><td  bgcolor="#00EC00" title="#00EC00">&nbsp;</td><td >#00EC00</td></tr>
+		<tr><td  bgcolor="#28FF28" title="#28FF28">&nbsp;</td><td >#28FF28</td></tr>
+		<tr><td  bgcolor="#53FF53" title="#53FF53">&nbsp;</td><td >#53FF53</td></tr>
+		<tr><td  bgcolor="#79FF79" title="#79FF79">&nbsp;</td><td >#79FF79</td></tr>
+		<tr><td  bgcolor="#93FF93" title="#93FF93">&nbsp;</td><td >#93FF93</td></tr>
+		<tr><td  bgcolor="#A6FFA6" title="#A6FFA6">&nbsp;</td><td >#A6FFA6</td></tr>
+		<tr><td  bgcolor="#BBFFBB" title="#BBFFBB">&nbsp;</td><td >#BBFFBB</td></tr>
+		<tr><td  bgcolor="#CEFFCE" title="#CEFFCE">&nbsp;</td><td >#CEFFCE</td></tr>
+		<tr><td  bgcolor="#DFFFDF" title="#DFFFDF">&nbsp;</td><td >#DFFFDF</td></tr>
+		<tr><td  bgcolor="#F0FFF0" title="#F0FFF0">&nbsp;</td><td >#F0FFF0</td></tr>
+		<tr><td  bgcolor="#642100" title="#642100">&nbsp;</td><td >#642100</td></tr>
+		<tr><td  bgcolor="#842B00" title="#842B00">&nbsp;</td><td >#842B00</td></tr>
+		<tr><td  bgcolor="#A23400" title="#A23400">&nbsp;</td><td >#A23400</td></tr>
+		<tr><td  bgcolor="#BB3D00" title="#BB3D00">&nbsp;</td><td >#BB3D00</td></tr>
+		<tr><td  bgcolor="#D94600" title="#D94600">&nbsp;</td><td >#D94600</td></tr>
+		<tr><td  bgcolor="#F75000" title="#F75000">&nbsp;</td><td >#F75000</td></tr>
+		<tr><td  bgcolor="#FF5809" title="#FF5809">&nbsp;</td><td >#FF5809</td></tr>
+		<tr><td  bgcolor="#FF8040" title="#FF8040">&nbsp;</td><td >#FF8040</td></tr>
+		<tr><td  bgcolor="#FF8F59" title="#FF8F59">&nbsp;</td><td >#FF8F59</td></tr>
+		<tr><td  bgcolor="#FF9D6F" title="#FF9D6F">&nbsp;</td><td >#FF9D6F</td></tr>
+		<tr><td  bgcolor="#FFAD86" title="#FFAD86">&nbsp;</td><td >#FFAD86</td></tr>
+		<tr><td  bgcolor="#FFBD9D" title="#FFBD9D">&nbsp;</td><td >#FFBD9D</td></tr>
+		<tr><td  bgcolor="#FFCBB3" title="#FFCBB3">&nbsp;</td><td >#FFCBB3</td></tr>
+		<tr><td  bgcolor="#FFDAC8" title="#FFDAC8">&nbsp;</td><td >#FFDAC8</td></tr>
+		<tr><td  bgcolor="#FFE6D9" title="#FFE6D9">&nbsp;</td><td >#FFE6D9</td></tr>
+		<tr><td  bgcolor="#FFF3EE" title="#FFF3EE">&nbsp;</td><td >#FFF3EE</td></tr>
+		<tr><td  bgcolor="#6C3365" title="#6C3365">&nbsp;</td><td >#6C3365</td></tr>
+		<tr><td  bgcolor="#7E3D76" title="#7E3D76">&nbsp;</td><td >#7E3D76</td></tr>
+		<tr><td  bgcolor="#8F4586" title="#8F4586">&nbsp;</td><td >#8F4586</td></tr>
+		<tr><td  bgcolor="#9F4D95" title="#9F4D95">&nbsp;</td><td >#9F4D95</td></tr>
+		<tr><td  bgcolor="#AE57A4" title="#AE57A4">&nbsp;</td><td >#AE57A4</td></tr>
+		<tr><td  bgcolor="#B766AD" title="#B766AD">&nbsp;</td><td >#B766AD</td></tr>
+		<tr><td  bgcolor="#C07AB8" title="#C07AB8">&nbsp;</td><td >#C07AB8</td></tr>
+		<tr><td  bgcolor="#CA8EC2" title="#CA8EC2">&nbsp;</td><td >#CA8EC2</td></tr>
+		<tr><td  bgcolor="#D2A2CC" title="#D2A2CC">&nbsp;</td><td >#D2A2CC</td></tr>
+		<tr><td  bgcolor="#DAB1D5" title="#DAB1D5">&nbsp;</td><td >#DAB1D5</td></tr>
+		<tr><td  bgcolor="#E2C2DE" title="#E2C2DE">&nbsp;</td><td >#E2C2DE</td></tr>
+		<tr><td  bgcolor="#EBD3E8" title="#EBD3E8">&nbsp;</td><td >#EBD3E8</td></tr>
+
+
+    </tbody>
+</table>
+
+
+</body>
+</html>
