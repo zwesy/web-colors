@@ -60,7 +60,7 @@
 
     function reg_test_color(str)
     {
-    	var reg=/^#[0-9A-Za-z]{6}$/;   /*定义验证表达式*/
+    	var reg=/^#[0-9A-Fa-f]{6}$/;   /*定义验证表达式*/
     	return reg.test(str);     /*进行验证*/
     }
 
