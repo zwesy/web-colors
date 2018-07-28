@@ -4,10 +4,19 @@
 	<meta charset="UTF-8">
 	<title>quite-web-colors</title>
 	<style type="text/css">
-		body{
-			background-color: #e0e0e0; 
+		html {
+			min-height:101%;
+			background:url('images/bg.jpg');
+			margin:0;
+			padding:0;
 		}
-		.fix_top{
+		body {
+			background-color: #e0e0e0; 
+			margin:0;
+			padding:0;
+			padding-bottom:105px;
+		}
+		.fix_top {
 			position: fixed;
 		    left: 0;
 		    top:0;
@@ -15,25 +24,26 @@
 		    height: 105px;
 		    background: #e0e0e0;
 		}
-		.console_menu{
-			width:550px;
+		.console_menu {
+			width:600px;
 			margin-left:  auto;
 			margin-right: auto;
 		}
-		.color_list{
+		.color_list {
 			margin-top: 105px;
 			margin-bottom: 105px;
 			margin-left: auto;
 			margin-right: auto;
-			width:550px;
+			width:600px;
 			border:1px;
 			border-style: solid;
 			border-color: #f0f0f0;
 			border-bottom:none;
 		}
-		#quite{
+		.i_btn {
 			width: 50px;
 			height: 26px;
+			margin-right:10px;
 		    border-radius: 4px;
 		    border-width: 1px;
 		    background: #e0e0e0;
@@ -44,7 +54,7 @@
 		    -moz代表firefox浏览器私有属性，-ms代表ie浏览器私有属性，-webkit代表safari、chrome私有属性。
 		    */
 		}
-		.input_color{
+		.input_color {
 			height: 20px;
    			width: 150px;
    			margin-right: 10px;
@@ -54,25 +64,28 @@
    			font-size: 14px;
    			color: #737300;
 		}
-		.input_color::-webkit-input-placeholder{
+		.input_color::-webkit-input-placeholder {
             color:#DEDEBE;
         }
-        .input_color::-moz-placeholder{   /* Mozilla Firefox 19+ */
+        .input_color::-moz-placeholder {   /* Mozilla Firefox 19+ */
             color:#DEDEBE;
         }
-        .input_color:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+        .input_color:-moz-placeholder {    /* Mozilla Firefox 4 to 18 */
             color:#DEDEBE;
         }
-        .input_color:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+        .input_color:-ms-input-placeholder {  /* Internet Explorer 10-11 */ 
             color:#DEDEBE;
         }
-
-        td{
+		.color_list tr:nth-child(2n) td:nth-child(2n) {
+			background-color: #d0d0d0;
+		}
+        td {
 			color: #737300;
 			height: 40px;
 			border-bottom: 1px solid #f0f0f0;
 		}
-		#sign{
+		
+		#sign {
 			color: #FF2D2D;
 			font-size: 14px;
 			font-weight: bolder;
@@ -85,10 +98,11 @@
 		<div class="console_menu">
 		<h2>WEB标准色彩比较</h2>
 			<div>
-				<input type="text" class="input_color" id="bgcolor" name="background" placeholder="#2f0000 background" />
-				<input type="text" class="input_color" id="master-color" name="master-color" placeholder="#000000 master-color" />
-				<button type="button" id="quite" onclick="quite()">比较</button>
-				 <label id="sign">提示</label>
+				<input type="text" class="input_color" id="master-color" name="master-color" placeholder="#000000 master-color" title="主色码"/>
+				<input type="text" class="input_color" id="bgcolor" name="background" placeholder="#2f0000 background" title="辅色码"/>
+				<button type="button" class="i_btn" id="quite" onclick="quite()">比较</button>
+				<button type="button" class="i_btn" id="requite" onclick="requite()">还原</button>
+				<label id="sign">提示</label>
 			</div>
 		</div>
 		<hr/>
@@ -97,10 +111,10 @@
 	<table class="color_list" cellspacing="0">
     <tbody>
         <tr>
-            <td width="150" bgcolor="#2f0000" rowspan="300" title="主色调" id ="master-color-demo">&nbsp;</td>
-            <td width="150" bgcolor="#000000" title="#000000">&nbsp;</td>
-            <td width="150" bgcolor="#000000" rowspan="300" title="背景色" id="background-color-demo">&nbsp;</td>
-            <td width="100"  >#000000</td>
+            <td width="160" bgcolor="#2f0000" rowspan="300" title="主色调" id ="master-color-demo">&nbsp;</td>
+            <td width="160" bgcolor="#000000" title="#000000">&nbsp;</td>
+            <td width="160" bgcolor="#000000" rowspan="300" title="背景色" id="background-color-demo">&nbsp;</td>
+            <td width="120"  >#000000</td>
         </tr>
 		<tr><td  bgcolor="#272727" title="#272727">&nbsp;</td><td >#272727</td></tr>
 		<tr><td  bgcolor="#3C3C3C" title="#3C3C3C">&nbsp;</td><td >#3C3C3C</td></tr>
@@ -408,17 +422,18 @@
 
 <script type="text/javascript">
 	
-
+	var background_color_element = document.getElementById("bgcolor");	 
+	var master_color_element = document.getElementById("master-color");
+	var sign = document.getElementById("sign");
+	
 	/**
 	*WEB颜色比较
 	*/
 	function quite()
-	{
-		var background_color_element = document.getElementById("bgcolor");	 
-		var master_color_element = document.getElementById("master-color");
-		var sign = document.getElementById("sign");
+	{	
 		sign.style.display = "none";//隐藏提示
-
+		sign.innerHTML = "";
+		
 		//获取输入的色码
 		var background_color = background_color_element.value;
 		var master_color = master_color_element.value;
@@ -440,6 +455,27 @@
 			sign.innerHTML = "请输入正确的色码";
 			sign.style.display = "inline";
 		}
+		
+	}
+	
+	/**
+	*还原
+	*/
+	function requite()
+	{
+		sign.style.display = "none";//隐藏提示
+		sign.innerHTML = "";
+		
+		var default_master_color = '#2f0000';
+		var default_background_color = '#000000';
+		
+		var master_color_demo = document.getElementById("master-color-demo");
+		var background_color_demo = document.getElementById("background-color-demo");
+		
+		master_color_element.value = default_master_color;
+		background_color_element.value = default_background_color;
+		master_color_demo.style.backgroundColor = default_master_color;
+		background_color_demo.style.backgroundColor = background_color_demo;
 		
 	}
  
@@ -465,7 +501,7 @@
     function reg_test_color(str)
     {
     	/*定义验证表达式*/
-    	var reg=/^#[0-9A-Za-z]{6}$/;  
+    	var reg=/^#[0-9A-Fa-f]{6}$/;  
     	/*进行验证*/ 
     	return reg.test(str);    
     }
